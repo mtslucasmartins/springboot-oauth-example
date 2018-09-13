@@ -1,0 +1,7 @@
+## YAML Template.
+spring:
+  application:
+    name: ottimizza-auth-server
+  cloud:
+    config:
+      uri: https://ottimizza-config-server.herokuapp.com
