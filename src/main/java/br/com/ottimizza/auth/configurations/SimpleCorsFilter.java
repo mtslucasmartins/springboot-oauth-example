@@ -35,6 +35,8 @@ public class SimpleCorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Methods", "*");
         response.setHeader("Access-Control-Max-Age", "3600");
         response.setHeader("Access-Control-Allow-Headers", "*");
+        
+        System.out.println(request.getMethod());
 
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
             System.out.println("SimpleCorsFilter.HttpServletResponse.SC_OK");
