@@ -26,6 +26,9 @@ public class SimpleCorsFilter implements Filter {
 
     @Override
     public void doFilter(ServletRequest req, ServletResponse res, FilterChain chain) throws IOException, ServletException {
+
+        System.out.println("SimpleCorsFilter.doFilter()");
+
         HttpServletResponse response = (HttpServletResponse) res;
         HttpServletRequest request = (HttpServletRequest) req;
         response.setHeader("Access-Control-Allow-Origin", "*");
@@ -34,8 +37,10 @@ public class SimpleCorsFilter implements Filter {
         response.setHeader("Access-Control-Allow-Headers", "x-requested-with, authorization");
 
         if ("OPTIONS".equalsIgnoreCase(request.getMethod())) {
+            System.out.println("SimpleCorsFilter.HttpServletResponse.SC_OK");
             response.setStatus(HttpServletResponse.SC_OK);
         } else {
+            System.out.println("SimpleCorsFilter.chain.doFilter");
             chain.doFilter(req, res);
         }
     }
