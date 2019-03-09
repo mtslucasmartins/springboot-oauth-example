@@ -52,13 +52,25 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
         return new JdbcTokenStore(dataSource);
     }
 
+    @Bean
+    public PasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
+    /*
+    @Bean
+    public UserApprovalHandler userApprovalHandler() {
+        return new DefaultUserApprovalHandler();
+    }
+    */
+    
     @Override
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                // .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST) // remove this
+        //      .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST) // remove this
                 .tokenStore(tokenStore());
-        // .userApprovalHandler(userApprovalHandler());
+        //      .userApprovalHandler(userApprovalHandler());
     }
 
     @Override
@@ -87,20 +99,5 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 // .and()
                 .build();
     }
-
-//    @Bean
-//    public UserApprovalHandler userApprovalHandler() {
-//        return new DefaultUserApprovalHandler();
-//    }
-    /* JDBC Token Storage
-    @Bean
-    public JdbcTokenStore inJdbcTokenStore() {
-        return new JdbcTokenStore(dataSource);
-    }
-     */
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return new BCryptPasswordEncoder();
-    }
-
+    
 }
