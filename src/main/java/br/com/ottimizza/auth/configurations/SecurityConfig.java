@@ -63,15 +63,11 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 //    }
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
-        web.ignoring().antMatchers(HttpMethod.OPTIONS);
-    }
-
-
-    @Override
     protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/login", "oauth/token").permitAll()
+        http.csrf().disable()
+            .authorizeRequests()
+                .antMatchers("/login").permitAll()
+                .antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll();
