@@ -14,8 +14,14 @@ public class ResourceServerConfig
 
     @Override
     public void configure(HttpSecurity http) throws Exception {
+        // http
+        //         .antMatcher("/user/info")
+        //         .authorizeRequests().anyRequest().authenticated();
+
+        http.csrf().disable();
+
         http
-                .antMatcher("/user/info")
-                .authorizeRequests().anyRequest().authenticated();
+        .authorizeRequests()
+            .anyRequest().permitAll();
     }
 }
