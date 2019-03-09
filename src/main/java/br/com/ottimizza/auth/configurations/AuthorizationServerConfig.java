@@ -56,7 +56,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .authenticationManager(authenticationManager)
-                .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST) // remove this
+                // .allowedTokenEndpointRequestMethods(HttpMethod.GET, HttpMethod.POST) // remove this
                 .tokenStore(tokenStore());
         // .userApprovalHandler(userApprovalHandler());
     }
