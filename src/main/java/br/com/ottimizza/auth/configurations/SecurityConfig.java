@@ -66,9 +66,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         http.csrf().disable()
             .authorizeRequests()
-                .antMatchers("/login").permitAll()
-                // this didn't exist before
                 .antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
+                .antMatchers("/login", "/oauth/token").permitAll()
                 .anyRequest().authenticated()
                 .and()
                 .formLogin().permitAll();
