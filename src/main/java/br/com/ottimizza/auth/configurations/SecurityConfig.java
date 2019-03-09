@@ -74,12 +74,20 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         //         .formLogin().permitAll();
 
         http
-                .csrf().disable()
+            .csrf().disable()
+                //.exceptionHandling()
+                 //   .authenticationEntryPoint((request, response, authException) -> response.sendError(HttpServletResponse.SC_UNAUTHORIZED))
+            //.and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.OPTIONS).permitAll()
-                .antMatchers("/**").authenticated()
+                    .antMatchers(HttpMethod.OPTIONS).permitAll()
+                    .antMatchers(HttpMethod.OPTIONS, "/oauth/token").permitAll()
+                    .antMatchers("/login", "/oauth/token").permitAll()
+                    .antMatchers("/**").authenticated()
+                    .anyRequest().authenticated()
                 .and()
-                .httpBasic();
+                    .formLogin().permitAll()
+                .and()
+                    .httpBasic();
     }
 
 }
