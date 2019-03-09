@@ -1,5 +1,7 @@
 delete from oauth_client_details;
 
+
+-- password: 123456
 insert into users (username, email, password, activated)
 select * from (
     select 'admin', 'admin@admin.com', '$2a$10$r0RFDmpneBVryx.ihHK9gu6FFJQi4nTxQUqzdSTvrPpaKZMxigqpy', true

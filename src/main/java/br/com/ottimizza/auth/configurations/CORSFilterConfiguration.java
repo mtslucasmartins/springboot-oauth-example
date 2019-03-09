@@ -4,7 +4,7 @@
  * Faz a confguração de Credentils, Origins, Methods, Headers
  * Permitidas nos Requests Recebidos.
  */
-package br.com.ottimizza.auth.config;
+package br.com.ottimizza.auth.configurations;
 
 import org.springframework.boot.web.servlet.FilterRegistrationBean;
 import org.springframework.context.annotation.Bean;
