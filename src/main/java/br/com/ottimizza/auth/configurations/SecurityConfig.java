@@ -27,7 +27,8 @@ import org.springframework.security.oauth2.provider.token.store.JdbcTokenStore;
 
 @Configuration
 @EnableWebSecurity
-@Order(39)
+// @Order(39)
+@Order(-1)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     @Autowired
